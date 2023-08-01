@@ -11,17 +11,81 @@ datasource db {
 }
 
 model Zones {
-  id             Int      @id @default(autoincrement())
-  zone           Int      @unique
+  id             Int           @id @default(autoincrement())
+  zone           Int           @unique
   description    String
   notableRegions String
+  Users          Users?
+  Plants         Plants?
+  Gardens        Gardens?
+  GardenPlants   GardenPlants?
 }
 
 model Users {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  firstName  String
-  lastName   String
-  zoneId     Zones    @relation(fields: [zoneId], references: [id])
-  zoneId     Int      @unique
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  firstName   String
+  lastName    String
+  zoneId      Int          @unique
+  zone        Zones        @relation(fields: [zoneId], references: [id])
+  gardenXp    Int
+  gardens     Gardens[]
+  PlantReview PlantReview?
+}
+
+model Plants {
+  id           Int           @id @default(autoincrement())
+  plantName    String
+  apiId        String
+  isHard       Boolean
+  count        Int
+  zoneId       Int           @unique
+  zone         Zones         @relation(fields: [zoneId], references: [id])
+  PlantReview  PlantReview?
+  GardenPlants GardenPlants?
+  ZoneKeywords ZoneKeywords?
+}
+
+model PlantReview {
+  id        Int      @id @default(autoincrement())
+  review    String
+  createdAt DateTime @default(now())
+  userId    Int      @unique
+  user      Users    @relation(fields: [userId], references: [id])
+  plantId   Int      @unique
+  plant     Plants   @relation(fields: [plantId], references: [id])
+}
+
+model Gardens {
+  id           Int            @id @default(autoincrement())
+  listName     String
+  gardenPlants GardenPlants[]
+  userId       Int            @unique
+  user         Users          @relation(fields: [userId], references: [id])
+  zoneId       Int            @unique
+  zone         Zones          @relation(fields: [zoneId], references: [id])
+}
+
+model GardenPlants {
+  id        Int      @id @default(autoincrement())
+  plantId   Int      @unique
+  plant     Plants   @relation(fields: [plantId], references: [id])
+  zoneId    Int      @unique
+  zone      Zones    @relation(fields: [zoneId], references: [id])
+  Gardens   Gardens? @relation(fields: [gardensId], references: [id])
+  gardensId Int?
+}
+
+model Keywords {
+  id           Int           @id @default(autoincrement())
+  keyword      Int           @unique
+  ZoneKeywords ZoneKeywords?
+}
+
+model ZoneKeywords {
+  id        Int      @id @default(autoincrement())
+  zoneId    Int      @unique
+  zone      Plants   @relation(fields: [zoneId], references: [id])
+  keywordId Int      @unique
+  keyword   Keywords @relation(fields: [keywordId], references: [id])
 }

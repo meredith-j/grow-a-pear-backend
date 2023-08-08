@@ -10,61 +10,61 @@ function zoneFunction(lng, lat) {
     let result = classifyPoint(zones[i], [lng, lat])
 
         if (result === -1 && (i < 19)) {
-            return "zone_0A"
+            return "0A"
         }
         if (result === -1 && (i < 31)) {
-            return "zone_0B"
+            return "0B"
         }
         if (result === -1 && (i < 50)) {
-            return "zone_1A"
+            return "1A"
         }
         if (result === -1 && (i < 78)) {
-            return "zone_1B"
+            return "1B"
         }
         if (result === -1 && (i < 99)) {
-            return "zone_2A"
+            return "2A"
         }
         if (result === -1 && (i < 176)) {
-            return "zone_2B"
+            return "2B"
         }
         if (result === -1 && (i < 338)) {
-            return "zone_3A"
+            return "3A"
         }
         if (result === -1 && (i < 606)) {
-            return "zone_3B"
+            return "3B"
         }
         if (result === -1 && (i < 785)) {
-            return "zone_4A"
+            return "4A"
         }
         if (result === -1 && (i < 990)) {
-            return "zone_4B"
+            return "4B"
         }
         if (result === -1 && (i < 1185)) {
-            return "zone_5A"
+            return "5A"
         }
         if (result === -1 && (i < 1484)) {
-            return "zone_5B"
+            return "5B"
         }
         if (result === -1 && (i < 1648)) {
-            return "zone_6A"
+            return "6A"
         }
         if (result === -1 && (i < 1751)) {
-            return "zone_6B"
+            return "6B"
         }
         if (result === -1 && (i < 1783)) {
-            return "zone_7A"
+            return "7A"
         }
         if (result === -1 && (i < 1807)) {
-            return "zone_7B"
+            return "7B"
         }
         if (result === -1 && (i < 1834)) {
-            return "zone_8A"
+            return "8A"
         }
         if (result === -1 && (i < 1853)) {
-            return "zone_8B"
+            return "8B"
         }
         if (result === -1 && (i < 1857)) {
-            return "zone_9A"
+            return "9A"
         }
     }
 };

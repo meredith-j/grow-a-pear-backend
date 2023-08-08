@@ -5,6 +5,7 @@ const getZone = require("../middleware/getZone")
 
 router
     .route("/")
-        .post(getZone, plantsController.getPlants)
+        .post(getZone, plantsController.postPlants)
+
 
 module.exports = router;

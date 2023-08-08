@@ -9,36 +9,62 @@ function zoneFunction(lng, lat) {
 
     let result = classifyPoint(zones[i], [lng, lat])
 
-        if (result === -1 && (i < 3)) {
+        if (result === -1 && (i < 19)) {
             return "zone_0A"
         }
-        if (result === -1 && (i < 7)) {
+        if (result === -1 && (i < 31)) {
             return "zone_0B"
         }
-        if (result === -1 && (i < 9)) {
+        if (result === -1 && (i < 50)) {
             return "zone_1A"
         }
-        if (result === -1 && (i < 10)) {
+        if (result === -1 && (i < 78)) {
             return "zone_1B"
         }
-        if (result === -1 && (i < 12)) {
+        if (result === -1 && (i < 99)) {
             return "zone_2A"
         }
-
-        if (result === -1 && (i < 13)) {
+        if (result === -1 && (i < 176)) {
+            return "zone_2B"
+        }
+        if (result === -1 && (i < 338)) {
             return "zone_3A"
         }
-        if (result === -1 && (i < 14)) {
+        if (result === -1 && (i < 606)) {
+            return "zone_3B"
+        }
+        if (result === -1 && (i < 785)) {
             return "zone_4A"
         }
-        if (result === -1 && (i < 15)) {
+        if (result === -1 && (i < 990)) {
+            return "zone_4B"
+        }
+        if (result === -1 && (i < 1185)) {
             return "zone_5A"
         }
-        if (result === -1 && (i < 16)) {
+        if (result === -1 && (i < 1484)) {
             return "zone_5B"
         }
-        if (result === -1 && (i < 17)) {
+        if (result === -1 && (i < 1648)) {
             return "zone_6A"
+        }
+        if (result === -1 && (i < 1751)) {
+            return "zone_6B"
+        }
+        if (result === -1 && (i < 1783)) {
+            return "zone_7A"
+        }
+        if (result === -1 && (i < 1807)) {
+            return "zone_7B"
+        }
+        if (result === -1 && (i < 1834)) {
+            return "zone_8A"
+        }
+        if (result === -1 && (i < 1853)) {
+            return "zone_8B"
+        }
+        if (result === -1 && (i < 1857)) {
+            return "zone_9A"
         }
     }
 };

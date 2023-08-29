@@ -75,26 +75,69 @@ const getZone = (req, res, next) => {
     const city = req.body.city
     const province = req.body.province
 
-    // let zone;
+    // check for 10 most populus cities in canada so that cost of API requests to google stays low
+    if (city === "Toronto" || province === "Ontario") {
+        req.body.zone = "7a";
+        next()
+    }
 
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${API_KEY}&address=${city}&${province}&canada&sensor=false`)
-         .then((response) => {
+    else if (city === "Mississauga" || city === "Hamilton" && province === "Ontario") {
+        req.body.zone = "6b";
+        next()
+    }
 
-            const lat = response.data.results[0].geometry.location.lat
-            const lng = response.data.results[0].geometry.location.lng
+    else if (city === "Montreal" || city === "Montréal" && province === "Quebec") {
+        req.body.zone = "6a";
+        next()
+    }
 
-            const zone = zoneFunction(lng, lat)
+    else if (city === "Brampton" && province === "Ontario") {
+        req.body.zone = "6a";
+        next()
+    }
 
-            req.body.zone = zone;
-            req.body.lat = lat;
-            req.body.lng = lng;
+    else if (city === "Calgary" || city === "Edmonton" && province === "Alberta") {
+        req.body.zone = "4a";
+        next()
+    }
 
-            next()
+    else if (city === "Winnipeg" && province === "Manitoba") {
+        req.body.zone = "4a";
+        next()
+    }
 
-         })
-         .catch((err) =>{
-            console.log(err)
-         })
+    else if (city === "Ottawa" && province === "Ontario") {
+        req.body.zone = "5b";
+        next()
+    }
+
+    else if (city === "Vancouver" && province === "British Colombia") {
+        req.body.zone = "8b";
+        next()
+    }
+
+    // if person is not from above cities, process google API get request
+    else {
+
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${API_KEY}&address=${city}&${province}&canada&sensor=false`)
+            .then((response) => {
+
+                const lat = response.data.results[0].geometry.location.lat
+                const lng = response.data.results[0].geometry.location.lng
+
+                const zone = zoneFunction(lng, lat)
+
+                req.body.zone = zone;
+                req.body.lat = lat;
+                req.body.lng = lng;
+
+                next()
+
+            })
+            .catch((err) =>{
+                console.log(err)
+            })
+    }
 };
 
 module.exports = getZone;

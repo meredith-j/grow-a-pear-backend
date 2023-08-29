@@ -81,27 +81,17 @@ const getZone = (req, res, next) => {
         next()
     }
 
-    else if (city === "Mississauga" || city === "Hamilton" && province === "Ontario") {
+    else if (city === "Mississauga" && province === "Ontario" || city === "Hamilton" && province === "Ontario") {
         req.body.zone = "6b";
         next()
     }
 
-    else if (city === "Montreal" || city === "Montréal" && province === "Quebec") {
+    else if (city === "Montreal" && province === "Quebec" || city === "Montréal" && province === "Quebec" || city === "Brampton" && province === "Ontario") {
         req.body.zone = "6a";
         next()
     }
 
-    else if (city === "Brampton" && province === "Ontario") {
-        req.body.zone = "6a";
-        next()
-    }
-
-    else if (city === "Calgary" || city === "Edmonton" && province === "Alberta") {
-        req.body.zone = "4a";
-        next()
-    }
-
-    else if (city === "Winnipeg" && province === "Manitoba") {
+    else if (city === "Calgary" &&  province === "Alberta" || city === "Edmonton" && province === "Alberta" || city === "Winnipeg" && province === "Manitoba") {
         req.body.zone = "4a";
         next()
     }

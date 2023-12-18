@@ -19,6 +19,7 @@ model Zones {
   Plants         Plants?
   Gardens        Gardens?
   GardenPlants   GardenPlants?
+  UserEmails     UserEmails?
 }
 
 model Users {
@@ -44,16 +45,18 @@ model Plants {
   PlantReview  PlantReview?
   GardenPlants GardenPlants?
   ZoneKeywords ZoneKeywords?
+  UserEmails   UserEmails?
 }
 
 model PlantReview {
-  id        Int      @id @default(autoincrement())
-  review    String
-  createdAt DateTime @default(now())
-  userId    Int      @unique
-  user      Users    @relation(fields: [userId], references: [id])
-  plantId   Int      @unique
-  plant     Plants   @relation(fields: [plantId], references: [id])
+  id         Int         @id @default(autoincrement())
+  review     String
+  createdAt  DateTime    @default(now())
+  userId     Int         @unique
+  user       Users       @relation(fields: [userId], references: [id])
+  plantId    Int         @unique
+  plant      Plants      @relation(fields: [plantId], references: [id])
+  UserEmails UserEmails?
 }
 
 model Gardens {
@@ -88,4 +91,15 @@ model ZoneKeywords {
   zone      Plants   @relation(fields: [zoneId], references: [id])
   keywordId Int      @unique
   keyword   Keywords @relation(fields: [keywordId], references: [id])
+}
+
+model UserEmails {
+  id        Int         @id @default(autoincrement())
+  userEmail String      @unique
+  zoneId    Int         @unique
+  zone      Zones       @relation(fields: [zoneId], references: [id])
+  plantId   Int         @unique
+  plant     Plants      @relation(fields: [plantId], references: [id])
+  reviewId  Int         @unique
+  review    PlantReview @relation(fields: [reviewId], references: [id])
 }

@@ -22,7 +22,14 @@ const postPlants = (req, res) => {
 
 
             // if plant does not exist, post new entry to Plant database
-
+            prisma.post.create({
+                data: {
+                  plant,
+                  isEasy,
+                  count,
+                  zone
+                },
+              })
 
             // function ends
             return

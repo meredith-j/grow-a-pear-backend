@@ -36,9 +36,9 @@ model Users {
 
 model Plants {
   id           Int           @id @default(autoincrement())
-  plantName    String
+  plant        String
   apiId        String
-  isHard       Boolean
+  isEasy       Boolean
   count        Int
   zoneId       Int           @unique
   zone         Zones         @relation(fields: [zoneId], references: [id])

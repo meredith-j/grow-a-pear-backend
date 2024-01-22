@@ -37,4 +37,4 @@ You can see the MVP for grow-a-pear at the links below:
 - Lottie-React Library
 - Google Maps Geocoding API
 
-### 🍐 See the backend repo for this project [here](https://github.com/meredith-j/grow-a-pear-backend).
+### 🍐 See the front end repo for this project [here](https://github.com/meredith-j/grow-a-pear-frontend).
